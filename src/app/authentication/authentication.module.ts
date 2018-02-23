@@ -1,18 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ComponentsList } from './authentication.routing';
-import { AuthenticationRoutes } from './authentication.routing';
+import { FormsModule } from '@angular/forms';
+import { ComponentsList, AuthenticationRoutes} from './authentication.routing';
+import { MaterialModule } from '../material/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    AuthenticationRoutes
+    AuthenticationRoutes,
+    FormsModule,
+    MaterialModule,
+    FlexLayoutModule
   ],
   declarations: [
     ComponentsList
   ]
 })
 
-export class AuthenticationModule { }
+export class AuthenticationModule {
+
+}

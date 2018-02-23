@@ -1,6 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { AuthLayoutComponent } from './layouts/app-layouts/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './layouts/app-layouts/main-layout/main-layout.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -29,7 +30,8 @@ const routes: Routes = [
       },
       {
         path: 'pharma-dashboard',
-        loadChildren: './dashboard/dashboard.module#DashboardModule'
+        loadChildren: './dashboard/dashboard.module#DashboardModule',
+        canActivate: [AuthGuard]
       }
     ]
   },

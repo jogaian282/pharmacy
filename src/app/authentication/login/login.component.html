@@ -1,3 +1,58 @@
-<p>
-  login works!
-</p>
+<!-- begin auth-layout login html -->
+<mat-toolbar color="primary">
+    <a aria-label="pharmacy" class="docs-button mat-button" mat-button="" routerlink="/" tabindex="0" aria-disabled="false" href="/">
+        <span class="mat-button-wrapper">
+      <!-- SVG ICON -->
+      <!-- <img _ngcontent-c1="" alt="angular" class="docs-angular-logo" src="../../../assets/img/homepage/angular-white-transparent.svg"> -->
+      <mat-icon>local_pharmacy</mat-icon>
+      <span class="font-16 text-bold">Pharmacy</span>
+        </span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+    </a>
+    <!-- This fills the remaining space of the current row -->
+    <span class="toolbar-filler "></span>
+
+    <a mat-raised-button color="accent">Register</a>
+
+    <span>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+    </button>
+    </mat-menu>
+    </span>
+</mat-toolbar>
+<!-- begin content section -->
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" class="signInCard">
+    <div fxFlex="1 1 33%">
+        <mat-card>
+            <mat-card-title>
+                <mat-toolbar color="primary">
+                    <span class="centerTitle">Login</span>
+                </mat-toolbar>
+            </mat-card-title>
+            <mat-card-content>
+                <div fxLayout="column">
+                    <mat-form-field fxFlex="1" [hideRequiredMarker]=false floatLabel="always">
+                        <input type="text" placeholder="Username" matInput #username required>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="1" [hideRequiredMarker]=false floatLabel="always">
+                        <input matInput required placeholder="Password" [type]="hide ? 'password' : 'text'">
+                        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+            <mat-card-actions fxLayoutAlign="flex-end">
+                <button mat-raised-button color="accent" type="button" (click)="login($event)">Sign-in</button>
+                <button mat-raised-button color="warn" type="button">Reset</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
+<!-- end content section -->
+<!-- end auth-layout login html -->

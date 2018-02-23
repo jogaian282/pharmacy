@@ -10,4 +10,5 @@ import { FormsModule } from '@angular/forms';
   declarations: []
 })
 
-export class SharedModule { }
+export class SharedModule {
+}

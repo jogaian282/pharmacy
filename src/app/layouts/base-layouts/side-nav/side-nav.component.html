@@ -1,0 +1,36 @@
+<!-- begin sidebar navigation menu section -->
+<mat-sidenav-container>
+    <mat-sidenav #sidenav class="cardContentCss" [mode]="isLargeScreen() ? 'side' : 'over'" [opened]="isLargeScreen()" [fixedInViewport]=true [fixedTopGap]=64>
+        <!-- <mat-toolbar color="primary">
+            <span class="toolbar-filler"></span>
+            <button mat-icon-button aria-label="Close" (click)="sidenav.toggle()" [hidden]="!sidenav.opened">
+              <span><mat-icon aria-hidden="true" class="iconFont">close</mat-icon></span>
+            </button>
+        </mat-toolbar> -->
+        <mat-nav-list class="navList">
+            <aside id="left-panel">
+                <!-- begin nav section -->
+                <nav>
+                    <!--begin ul  -->
+                    <ul>
+                        <li routerLinkActive="active">
+                            <a routerLink="">Dashboard</a>
+                        </li>
+                    </ul>
+                    <!-- end ul -->
+                </nav>
+                <!-- end nav section -->
+            </aside>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="innerPageWrapper">
+            <pharma-header [sideBarRef]="sideNavReference"></pharma-header>
+            <main class="content">
+                <router-outlet></router-outlet>
+            </main>
+            <pharma-footer></pharma-footer>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- end sidebar navigation menu section -->

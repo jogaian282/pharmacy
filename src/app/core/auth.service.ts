@@ -17,7 +17,7 @@ export class AuthService {
    * @description - To implement logic to check whether user authorized
    */
   get isAuthorized() {
-    return false;
+    return true;
   }
 
 }

@@ -1,0 +1,50 @@
+/* begin sidenav component css */
+
+.innerPageWrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1;
+    padding: 75px 14px 10px 14px;
+}
+
+
+/*
+ * Make the Component injected by Router Outlet full height:
+ */
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+main>*:not(router-outlet) {
+    flex: 1;
+    display: block;
+}
+
+.mat-drawer-backdrop.mat-drawer-shown {
+    visibility: hidden !important;
+}
+
+.navList {
+    padding-top: 0px !important;
+}
+
+.cardContentCss #left-panel ul {
+    list-style: none;
+    margin: 0.7rem;
+    padding: 5px;
+}
+
+.cardContentCss #left-panel ul li {
+    padding: 10px 0px;
+}
+
+
+/* end sidenave component css */
