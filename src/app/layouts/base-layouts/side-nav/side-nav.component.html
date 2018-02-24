@@ -10,12 +10,21 @@
         <mat-nav-list class="navList">
             <aside id="left-panel">
                 <!-- begin nav section -->
-                <nav>
+                <nav class="sidebar-nav">
                     <!--begin ul  -->
-                    <ul>
-                        <li routerLinkActive="active">
+                    <ul class="nav">
+                        <!-- <li routerLinkActive="active">
                             <a routerLink="">Dashboard</a>
-                        </li>
+                        </li> -->
+                        <ng-template ngFor let-navItem [ngForOf]="navigationMenusList">
+                            <li *ngIf="isDivider(navItem)" class="nav-divider"></li>
+                            <ng-template [ngIf]="isTitle(navItem)">
+                                <pharma-sidebar-nav-title [title]='navItem'></pharma-sidebar-nav-title>
+                            </ng-template>
+                            <ng-template [ngIf]="!isDivider(navItem)&&!isTitle(navItem)">
+                                <pharma-sidebar-nav-item [item]='navItem'></pharma-sidebar-nav-item>
+                            </ng-template>
+                        </ng-template>
                     </ul>
                     <!-- end ul -->
                 </nav>

@@ -6,14 +6,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '../material/material.module';
 import { AuthLayoutComponent } from './app-layouts/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './app-layouts/main-layout/main-layout.component';
-import { HeaderComponent } from './base-layouts/header/header.component';
-import { SideNavComponent } from './base-layouts/side-nav/side-nav.component';
-import { FooterComponent } from './base-layouts/footer/footer.component';
+import { SideNavModule } from './base-layouts/side-nav/side-nav.module';
 
 @NgModule({
-imports : [CommonModule, FormsModule, RouterModule, FlexLayoutModule, MaterialModule],
-declarations : [AuthLayoutComponent, MainLayoutComponent, HeaderComponent, SideNavComponent,
-FooterComponent],
+imports : [CommonModule, FormsModule, RouterModule, FlexLayoutModule, MaterialModule, SideNavModule],
+declarations : [AuthLayoutComponent, MainLayoutComponent],
 providers: [],
 exports: []
 })
