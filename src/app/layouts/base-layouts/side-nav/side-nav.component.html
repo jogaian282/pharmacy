@@ -1,6 +1,6 @@
 <!-- begin sidebar navigation menu section -->
-<mat-sidenav-container>
-    <mat-sidenav #sidenav class="cardContentCss" [mode]="isLargeScreen() ? 'side' : 'over'" [opened]="isLargeScreen()" [fixedInViewport]=true [fixedTopGap]=64>
+<mat-sidenav-container class="app-admin-container" (window:resize)="onResize($event)" [attr.pcoded-device-type]="deviceType" [attr.vertical-nav-type]="verticalNavType" [attr.vertical-effect]="verticalEffect">
+    <mat-sidenav #sidenav class="cardContentCss" [fixedInViewport]="isShowToggle" [opened]='isShowToggle' [mode]='verticalEffect'>
         <!-- <mat-toolbar color="primary">
             <span class="toolbar-filler"></span>
             <button mat-icon-button aria-label="Close" (click)="sidenav.toggle()" [hidden]="!sidenav.opened">
@@ -11,11 +11,8 @@
             <aside id="left-panel">
                 <!-- begin nav section -->
                 <nav class="sidebar-nav">
-                    <!--begin ul  -->
+                    <!--begin ul-->
                     <ul class="nav">
-                        <!-- <li routerLinkActive="active">
-                            <a routerLink="">Dashboard</a>
-                        </li> -->
                         <ng-template ngFor let-navItem [ngForOf]="navigationMenusList">
                             <li *ngIf="isDivider(navItem)" class="nav-divider"></li>
                             <ng-template [ngIf]="isTitle(navItem)">
@@ -32,9 +29,9 @@
             </aside>
         </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content class="outerPageWrapper-sidenav" [ngClass]="{'outerPageWrapper-withoutsidenav': toggleToolbar}">
         <div class="innerPageWrapper">
-            <pharma-header [sideBarRef]="sideNavReference"></pharma-header>
+            <pharma-header [sideBarRef]="sideNavReference" (isToggleToolbar)="getStatus($event)"></pharma-header>
             <main class="content">
                 <router-outlet></router-outlet>
             </main>

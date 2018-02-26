@@ -9,7 +9,6 @@ export class NavDropdownDirective {
   constructor(private el: ElementRef) { }
 
   toggle() {
-    console.log('open');
     this.el.nativeElement.classList.toggle('open');
   }
 
