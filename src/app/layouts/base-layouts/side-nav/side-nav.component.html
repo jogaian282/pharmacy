@@ -1,45 +1,70 @@
 <!-- begin sidebar navigation menu section -->
-<mat-sidenav-container #container id="container" class="app-admin-container mat-drawer-transition" [ngClass]="{'sidebar-full' : (toggleToolbar == true),'sidebar-closed' : toggleToolbar == false,'sidebar-compact' : collapsedSidenav == false,'sidebar-opened': (toggleToolbar || collapsedSidenav == false)}"
-(window:resize)="onResize($event)" [attr.pcoded-device-type]="deviceType" [attr.vertical-nav-type]="verticalNavType" [attr.vertical-effect]="verticalEffect">
-    <mat-sidenav #sidenav class="cardContentCss" [fixedInViewport]="isShowToggle" [opened]='isShowToggle' [mode]='verticalEffect'>
-        <!-- <mat-toolbar color="primary">
-            <span class="toolbar-filler"></span>
-            <button mat-icon-button aria-label="Close" (click)="sidenav.toggle()" [hidden]="!sidenav.opened">
-              <span><mat-icon aria-hidden="true" class="iconFont">close</mat-icon></span>
-            </button>
-        </mat-toolbar> -->
-        <mat-nav-list class="navList">
-            <aside id="left-panel">
-                <!-- begin nav section -->
-                <nav class="sidebar-nav">
-                    <!--begin ul-->
-                    <ul class="nav">
-                        <ng-template ngFor let-navItem [ngForOf]="navigationMenusList">
-                            <li *ngIf="isDivider(navItem)" class="nav-divider"></li>
-                            <ng-template [ngIf]="isTitle(navItem)">
-                                <pharma-sidebar-nav-title [title]='navItem'></pharma-sidebar-nav-title>
-                            </ng-template>
-                            <ng-template [ngIf]="!isDivider(navItem)&&!isTitle(navItem)">
-                                <pharma-sidebar-nav-item [item]='navItem'></pharma-sidebar-nav-item>
-                            </ng-template>
-                        </ng-template>
-                    </ul>
-                    <!-- end ul -->
-                </nav>
-                <!-- end nav section -->
-            </aside>
-        </mat-nav-list>
-    </mat-sidenav>
+<mat-sidenav-container class="app-admin-container" [class.sidebar-opened]="toggleToolbar || collapsedSidenav" [class.sidebar-compact]="collapsedSidenav" [class.sidebar-full]="toggleToolbar && !collapsedSidenav" [class.sidebar-closed]="!toggleToolbar">
+    <!-- begin sidenav content -->
     <mat-sidenav-content cdkscrollable>
-        <div class="outerPageWrapper-sidenav">
-            <div class="innerPageWrapper">
-                <pharma-header [sideBarRef]="sideNavReference" (isCollapseToolbar)="isCollapseSideNav($event)" (isToggleToolbar)="getStatus($event)"></pharma-header>
-                <main class="content">
-                    <router-outlet></router-outlet>
-                </main>
-                <pharma-footer></pharma-footer>
+        <div class="sidebar-panel">
+            <!-- begin nav section -->
+            <div class="navigation-hold ps" fxLayout="column" id="scroll-area" style="flex-direction: column;
+            box-sizing: border-box;
+            display: flex;">
+                <div class="branding default-bg">
+                    <img alt="" class="app-logo" src="assets/images/angular_logo.png">
+                    <!-- <img alt="" class="app-logo-text ng-star-inserted">Angular 5 -->
+                    <span class="app-logo-text">Angular 5</span>
+                </div>
+                <div class="quick-search">
+                    <mat-form-field>
+                        <input type="text" placeholder="Store" aria-label="Number" [(ngModel)]="selectedOption" name="options" matInput [matAutocomplete]="auto">
+                    </mat-form-field>
+
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of options" [value]="option">
+                            {{ option }}
+                        </mat-option>
+                    </mat-autocomplete>
+                </div>
+                <!-- begin ul -->
+                <div class="nav sidenav-hold">
+                    <div *ngIf="toggleToolbar && !collapsedSidenav">
+                        <ul>
+                            <ng-template ngFor let-navItem [ngForOf]="navigationMenusList">
+                                <li *ngIf="isDivider(navItem)" class="nav-divider"></li>
+                                <ng-template [ngIf]="isTitle(navItem)">
+                                    <pharma-sidebar-nav-title [title]='navItem'></pharma-sidebar-nav-title>
+                                </ng-template>
+                                <ng-template [ngIf]="!isDivider(navItem)&&!isTitle(navItem)">
+                                    <pharma-sidebar-nav-item [item]='navItem'></pharma-sidebar-nav-item>
+                                </ng-template>
+                            </ng-template>
+                        </ul>
+                    </div>
+                    <div *ngIf="collapsedSidenav">
+                        <div class="icon-menu">
+                            <ul>
+                                <ng-template ngFor let-navItem [ngForOf]="iconsList">
+                                    <li *ngIf="isDivider(navItem)" class="nav-divider"></li>
+                                    <ng-template [ngIf]="isTitle(navItem)">
+                                        <pharma-sidebar-nav-title [title]='navItem'></pharma-sidebar-nav-title>
+                                    </ng-template>
+                                    <ng-template [ngIf]="!isDivider(navItem)&&!isTitle(navItem)">
+                                        <pharma-sidebar-nav-item [item]='navItem'></pharma-sidebar-nav-item>
+                                    </ng-template>
+                                </ng-template>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- begin main content -->
+        <div class="main-content-wrap">
+            <pharma-header (isCollapseToolbar)="isCollapseSideNav($event)" (isToggleToolbar)="getStatus($event)"></pharma-header>
+            <main class="rightside-content-hold">
+                <router-outlet></router-outlet>
+            </main>
+        </div>
+        <!-- end main content -->
     </mat-sidenav-content>
+    <!-- end sidenav content -->
 </mat-sidenav-container>
 <!-- end sidebar navigation menu section -->

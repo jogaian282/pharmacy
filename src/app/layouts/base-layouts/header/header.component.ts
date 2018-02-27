@@ -8,11 +8,10 @@ import { Component, OnInit, Input , Output , EventEmitter } from '@angular/core'
 
 export class HeaderComponent implements OnInit {
 
-  @Input() sideBarRef;
   @Output() isToggleToolbar = new EventEmitter();
   @Output() isCollapseToolbar = new EventEmitter();
-  isFullWidthToolbar = true;
-  public isCollapsedSideBar = true;
+  public isFullWidthToolbar = true;
+  public isCollapsedSideBar = false;
 
   constructor() { }
 
@@ -26,13 +25,11 @@ export class HeaderComponent implements OnInit {
 
   emitData(status) {
     this.isToggleToolbar.emit(status);
-    this.sideBarRef.toggle();
   }
 
   collapseSideNav() {
     this.isCollapsedSideBar = !this.isCollapsedSideBar;
     this.isCollapseToolbar.emit(this.isCollapsedSideBar);
-    this.sideBarRef.toggle();
   }
 
 }

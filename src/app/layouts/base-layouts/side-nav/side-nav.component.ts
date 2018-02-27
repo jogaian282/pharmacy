@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild , ViewEncapsulation, ElementRef } from '@angular/core';
-import { navigation } from '../../../menuLinks';
+import { navigation , icons } from '../../../menuLinks';
 
 @Component({
   selector: 'pharma-side-nav',
@@ -13,6 +13,7 @@ export class SideNavComponent implements OnInit {
   @ViewChild('sidenav') sideNav;
   @ViewChild('container') container: ElementRef;
   public navigationMenusList = navigation;
+  public iconsList = icons;
   public toggleToolbar = true;
   public collapsedSidenav: boolean;
   public sideNavReference;
@@ -25,6 +26,12 @@ export class SideNavComponent implements OnInit {
   public toggleOn = true;
   public windowWidth: number;
   public isShowToggle = true;
+  public selectedOption: string;
+  public options = [
+    'One',
+    'Two',
+    'Three'
+  ];
 
 
   constructor() {
@@ -35,7 +42,8 @@ export class SideNavComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sideNavReference = this.sideNav;
+    // this.sideNavReference = this.sideNav;
+    // console.log(this.sideNavReference);
   }
 
   /**

@@ -1,0 +1,43 @@
+<mat-sidenav-container #container id="container" class="app-admin-container mat-drawer-transition" [ngClass]="{'sidebar-full' : (toggleToolbar == true),'sidebar-closed' : toggleToolbar == false,'sidebar-compact' : collapsedSidenav == false,'sidebar-opened': (toggleToolbar || collapsedSidenav == false)}"
+    (window:resize)="onResize($event)" [attr.pcoded-device-type]="deviceType" [attr.vertical-nav-type]="verticalNavType" [attr.vertical-effect]="verticalEffect">
+    <mat-sidenav #sidenav class="cardContentCss" [fixedInViewport]="isShowToggle" [opened]='isShowToggle' [mode]='verticalEffect'>
+        <!-- <mat-toolbar color="primary">
+            <span class="toolbar-filler"></span>
+            <button mat-icon-button aria-label="Close" (click)="sidenav.toggle()" [hidden]="!sidenav.opened">
+              <span><mat-icon aria-hidden="true" class="iconFont">close</mat-icon></span>
+            </button>
+        </mat-toolbar> -->
+        <mat-nav-list class="navList">
+            <aside id="left-panel">
+                <!-- begin nav section -->
+                <nav class="sidebar-nav">
+                    <!--begin ul-->
+                    <ul class="nav">
+                        <ng-template ngFor let-navItem [ngForOf]="navigationMenusList">
+                            <li *ngIf="isDivider(navItem)" class="nav-divider"></li>
+                            <ng-template [ngIf]="isTitle(navItem)">
+                                <pharma-sidebar-nav-title [title]='navItem'></pharma-sidebar-nav-title>
+                            </ng-template>
+                            <ng-template [ngIf]="!isDivider(navItem)&&!isTitle(navItem)">
+                                <pharma-sidebar-nav-item [item]='navItem'></pharma-sidebar-nav-item>
+                            </ng-template>
+                        </ng-template>
+                    </ul>
+                    <!-- end ul -->
+                </nav>
+                <!-- end nav section -->
+            </aside>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content cdkscrollable>
+        <div class="outerPageWrapper-sidenav">
+            <div class="innerPageWrapper">
+                <pharma-header [sideBarRef]="sideNavReference" (isCollapseToolbar)="isCollapseSideNav($event)" (isToggleToolbar)="getStatus($event)"></pharma-header>
+                <main class="content">
+                    <router-outlet></router-outlet>
+                </main>
+                <pharma-footer></pharma-footer>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -13,6 +13,7 @@ import {
   MatCheckboxModule,
   MatRadioModule,
   MatIconModule,
+  MatAutocompleteModule,
   MatListModule,
   MatTabsModule,
   MatTooltipModule
@@ -33,6 +34,7 @@ import 'hammerjs';
     MatMenuModule,
     MatSidenavModule,
     MatTabsModule,
+    MatAutocompleteModule,
     MatCheckboxModule,
     MatFormFieldModule,
     ScrollDispatchModule,
@@ -49,6 +51,7 @@ import 'hammerjs';
     MatRadioModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatAutocompleteModule,
     MatGridListModule,
     ScrollDispatchModule,
     MatTabsModule,

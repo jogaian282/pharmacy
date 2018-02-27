@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../../../material/material.module';
 import { APP_SIDEBAR_NAV } from './side-nav-items/side-nav-list';
+import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../header/header.component';
 import { NavDropdownDirective } from '../../../directives/nav-dropdown.directive';
 import { NavDropdownToggleDirective } from '../../../directives/nav-dropdown-toggle.directive';
@@ -13,7 +14,8 @@ import { FooterComponent } from '../footer/footer.component';
   imports: [
     CommonModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   declarations: [
     APP_SIDEBAR_NAV,
