@@ -10,7 +10,9 @@ export class HeaderComponent implements OnInit {
 
   @Input() sideBarRef;
   @Output() isToggleToolbar = new EventEmitter();
-  isFullWidthToolbar = false;
+  @Output() isCollapseToolbar = new EventEmitter();
+  isFullWidthToolbar = true;
+  public isCollapsedSideBar = true;
 
   constructor() { }
 
@@ -24,6 +26,12 @@ export class HeaderComponent implements OnInit {
 
   emitData(status) {
     this.isToggleToolbar.emit(status);
+    this.sideBarRef.toggle();
+  }
+
+  collapseSideNav() {
+    this.isCollapsedSideBar = !this.isCollapsedSideBar;
+    this.isCollapseToolbar.emit(this.isCollapsedSideBar);
     this.sideBarRef.toggle();
   }
 

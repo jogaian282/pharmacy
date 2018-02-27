@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild , ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild , ViewEncapsulation, ElementRef } from '@angular/core';
 import { navigation } from '../../../menuLinks';
 
 @Component({
@@ -11,8 +11,10 @@ import { navigation } from '../../../menuLinks';
 export class SideNavComponent implements OnInit {
 
   @ViewChild('sidenav') sideNav;
+  @ViewChild('container') container: ElementRef;
   public navigationMenusList = navigation;
-  public toggleToolbar: boolean;
+  public toggleToolbar = true;
+  public collapsedSidenav: boolean;
   public sideNavReference;
   public deviceType = 'desktop';
   public verticalNavType = 'expanded';
@@ -118,6 +120,12 @@ export class SideNavComponent implements OnInit {
 
   public getStatus(status) {
     this.toggleToolbar = status;
+    console.log(this.toggleToolbar);
+  }
+
+  public isCollapseSideNav(status) {
+    this.collapsedSidenav = status;
+    console.log(this.collapsedSidenav);
   }
 
 }

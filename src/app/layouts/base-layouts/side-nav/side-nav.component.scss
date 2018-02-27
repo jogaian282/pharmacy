@@ -1,8 +1,17 @@
 /* begin sidenav component css */
 
-.cardContentCss {
+.sidebar-full .cardContentCss {
     width: 15rem;
     overflow: hidden;
+}
+
+.sidebar-compact .cardContentCss {
+    width: 48px;
+}
+
+.sidebar-closed .cardContentCss {
+    overflow: hidden;
+    left: -15rem;
 }
 
 // .outerPageWrapper-sidenav {
@@ -11,6 +20,38 @@
 // .outerPageWrapper-withoutsidenav {
 //     width: 100%;
 // }
+
+.sidebar-compact .outerPageWrapper-sidenav{
+    width: calc(100% - 48px);
+}
+
+r.sidebar-full .outerPageWrapper-sidenav{
+    width: calc(100% - 15rem);
+}
+
+.sidebar-closed .outerPageWrapper-sidenav {
+    width: 100%;
+}
+
+
+.mat-drawer-transition .mat-drawer-content {
+     transition-duration: .4s;
+     transition-timing-function: cubic-bezier(.25,.8,.25,1);
+     transition-property: transform,margin-left,margin-right;
+}
+
+// .app-admin-container[vertical-nav-type=expanded][vertical-effect=side] .outerPageWrapper-sidenav {
+//     // width: 100%;
+// }
+
+// .app-admin-container[vertical-nav-type=collapsed][vertical-effect=push] .outerPageWrapper-sidenav {
+//     width: calc(100% - 48px);
+// }
+
+// .app-admin-container[vertical-nav-type=offcanvas][vertical-effect=over] .outerPageWrapper-sidenav {
+//     width: calc(100% - 15rem);
+// }
+
 .innerPageWrapper {
     display: flex;
     flex-direction: column;

@@ -1,5 +1,6 @@
 <!-- begin sidebar navigation menu section -->
-<mat-sidenav-container class="app-admin-container" (window:resize)="onResize($event)" [attr.pcoded-device-type]="deviceType" [attr.vertical-nav-type]="verticalNavType" [attr.vertical-effect]="verticalEffect">
+<mat-sidenav-container #container id="container" class="app-admin-container mat-drawer-transition" [ngClass]="{'sidebar-full' : (toggleToolbar == true),'sidebar-closed' : toggleToolbar == false,'sidebar-compact' : collapsedSidenav == false,'sidebar-opened': (toggleToolbar || collapsedSidenav == false)}"
+(window:resize)="onResize($event)" [attr.pcoded-device-type]="deviceType" [attr.vertical-nav-type]="verticalNavType" [attr.vertical-effect]="verticalEffect">
     <mat-sidenav #sidenav class="cardContentCss" [fixedInViewport]="isShowToggle" [opened]='isShowToggle' [mode]='verticalEffect'>
         <!-- <mat-toolbar color="primary">
             <span class="toolbar-filler"></span>
@@ -29,13 +30,15 @@
             </aside>
         </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content class="outerPageWrapper-sidenav" [ngClass]="{'outerPageWrapper-withoutsidenav': toggleToolbar}">
-        <div class="innerPageWrapper">
-            <pharma-header [sideBarRef]="sideNavReference" (isToggleToolbar)="getStatus($event)"></pharma-header>
-            <main class="content">
-                <router-outlet></router-outlet>
-            </main>
-            <pharma-footer></pharma-footer>
+    <mat-sidenav-content cdkscrollable>
+        <div class="outerPageWrapper-sidenav">
+            <div class="innerPageWrapper">
+                <pharma-header [sideBarRef]="sideNavReference" (isCollapseToolbar)="isCollapseSideNav($event)" (isToggleToolbar)="getStatus($event)"></pharma-header>
+                <main class="content">
+                    <router-outlet></router-outlet>
+                </main>
+                <pharma-footer></pharma-footer>
+            </div>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

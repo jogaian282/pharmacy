@@ -1,7 +1,20 @@
 <!-- begin header component html -->
 <header role="banner">
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" style="flex-direction: row;
+    box-sizing: border-box;
+    display: flex;">
 
+        <button type="button" aria-label="Menu" fxLayoutAlign="end" mat-icon-button (click)="toggleSideNav()" matTooltip="Toggle Hide/Open">
+            <span><mat-icon aria-hidden="true" class="iconFont">menu</mat-icon></span>
+        </button>
+
+        <button class="toggle-collapsed mat-icon-button" *ngIf="isFullWidthToolbar || !isToggleToolbar" (click)="collapseSideNav()" fxhide.lt-md="true" id="collapseToggle" mat-icon-button="" matTooltip="Toggle Collapse" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); display: block;">
+            <span class="mat-button-wrapper">
+                <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">chevron_left</mat-icon>
+            </span>
+            <div class="mat-button-ripple mat-ripple mat-button-ripple-round" matripple=""></div>
+            <div class="mat-button-focus-overlay"></div>
+        </button>
         <a aria-label="pharmacy" class="mat-button" mat-button="" routerlink="/" tabindex="0" aria-disabled="false" href="/">
             <span class="mat-button-wrapper">
                 <!-- SVG ICON -->
@@ -14,10 +27,6 @@
         </a>
 
         <span class="toolbar-filler"></span>
-
-        <button type="button" aria-label="Menu" fxLayoutAlign="end" mat-icon-button (click)="toggleSideNav()" title="Open sidenav">
-            <span><mat-icon aria-hidden="true" class="iconFont">menu</mat-icon></span>
-        </button>
 
     </mat-toolbar>
 </header>

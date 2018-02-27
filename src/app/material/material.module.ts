@@ -14,8 +14,10 @@ import {
   MatRadioModule,
   MatIconModule,
   MatListModule,
-  MatTabsModule
+  MatTabsModule,
+  MatTooltipModule
 } from '@angular/material';
+import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 import 'hammerjs';
 
 @NgModule({
@@ -33,6 +35,8 @@ import 'hammerjs';
     MatTabsModule,
     MatCheckboxModule,
     MatFormFieldModule,
+    ScrollDispatchModule,
+    MatTooltipModule,
     MatIconModule,
     MatListModule
   ],
@@ -46,12 +50,14 @@ import 'hammerjs';
     MatSelectModule,
     MatCheckboxModule,
     MatGridListModule,
+    ScrollDispatchModule,
     MatTabsModule,
     MatCardModule,
     MatMenuModule,
     MatSidenavModule,
     MatFormFieldModule,
     MatIconModule,
+    MatTooltipModule,
     MatListModule
   ]
 })
