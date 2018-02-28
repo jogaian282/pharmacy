@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild , ViewEncapsulation, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild , ViewEncapsulation, ElementRef, HostListener } from '@angular/core';
 import { navigation , icons } from '../../../menuLinks';
 
 @Component({
@@ -10,7 +10,7 @@ import { navigation , icons } from '../../../menuLinks';
 
 export class SideNavComponent implements OnInit {
 
-  @ViewChild('sidenav') sideNav;
+  @ViewChild('content') sideNav;
   @ViewChild('container') container: ElementRef;
   public navigationMenusList = navigation;
   public iconsList = icons;
@@ -26,6 +26,8 @@ export class SideNavComponent implements OnInit {
   public toggleOn = true;
   public windowWidth: number;
   public isShowToggle = true;
+  public hideSideNavBackdrop: boolean;
+  public visible;
   public selectedOption: string;
   public options = [
     'One',
@@ -34,7 +36,7 @@ export class SideNavComponent implements OnInit {
   ];
 
 
-  constructor() {
+  constructor(private eRef: ElementRef) {
     const scrollHeight = window.screen.height - 150;
     this.innerHeight = scrollHeight + 'px';
     this.windowWidth = window.innerWidth;
@@ -58,12 +60,12 @@ export class SideNavComponent implements OnInit {
     // }
   }
 
-  public onClickedOutside(e: Event) {
-    if (this.windowWidth < 768 && this.toggleOn && this.verticalNavType !== 'offcanvas') {
-      this.toggleOn = true;
-      this.verticalNavType = 'offcanvas';
-    }
-  }
+  // public onClickedOutside(e: Event) {
+  //   if (this.windowWidth < 768 && this.toggleOn && this.verticalNavType !== 'offcanvas') {
+  //     this.toggleOn = true;
+  //     this.verticalNavType = 'offcanvas';
+  //   }
+  // }
 
   public onResize(event) {
     this.innerHeight = event.target.innerHeight + 'px';
@@ -84,16 +86,22 @@ export class SideNavComponent implements OnInit {
    */
   public setMenuAttributes(windowWidth) {
     if (windowWidth >= 768 && windowWidth <= 1024) {
+      this.visible = true;
+      this.toggleToolbar = false;
       this.deviceType = 'tablet';
       this.verticalNavType = 'collapsed';
       this.verticalEffect = 'side';
       return false;
     } else if (windowWidth < 768) {
+      this.visible = true;
+      this.toggleToolbar = false;
       this.deviceType = 'mobile';
       this.verticalNavType = 'offcanvas';
       this.verticalEffect = 'over';
       return false;
     } else {
+      this.visible = false;
+      this.toggleToolbar = true;
       this.deviceType = 'desktop';
       this.verticalNavType = 'expanded';
       this.verticalEffect = 'side';
@@ -128,12 +136,39 @@ export class SideNavComponent implements OnInit {
 
   public getStatus(status) {
     this.toggleToolbar = status;
-    console.log(this.toggleToolbar);
   }
 
   public isCollapseSideNav(status) {
     this.collapsedSidenav = status;
-    console.log(this.collapsedSidenav);
   }
+
+  public close(backdropStatus) {
+    // if (this.toggleOn && this.verticalNavType !== 'offcanvas') {
+    //   this.toggleOn = true;
+    //   this.toggleToolbar = false;
+    // }
+    // this.setMenuAttributes(this.windowWidth);
+    this.visible = false;
+    this.hideSideNavBackdrop = true;
+  }
+
+  // @HostListener('document:click', ['$event'])
+  // clickout(event) {
+  //   // if (this.toggleToolbar) {
+  //   //   this.toggleToolbar = false;
+  //   //   this.visible = true;
+  //   // }
+  //   if (this.windowWidth >= 768 && this.windowWidth <= 1024) {
+  //     console.log(event.target.classList);
+  //     // if (event.target.classList.contains('visible')) {
+  //     //   console.log(event.target);
+  //     // }
+  //     console.log(this.eRef.nativeElement);
+  //     if (this.eRef.nativeElement.contains()) {
+  //       console.log(this.eRef.nativeElement);
+  //     }
+  //   }
+  // }
+
 
 }

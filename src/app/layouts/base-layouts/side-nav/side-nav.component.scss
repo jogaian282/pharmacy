@@ -166,14 +166,14 @@
 .sidebar-panel .dropdown-toggle,
 .sidebar-panel .nav-link {
     display: block;
-    // padding: .75rem 1rem;
+    padding: .75rem 1rem;
     text-decoration: none;
 }
 
 .nav-link,
 .dropdown-toggle {
     display: block;
-    // padding: .5rem 1rem;
+    padding: .5rem 1rem;
 }
 
 .sidebar-panel .nav-title {
@@ -258,6 +258,11 @@ a:not([href]):not([tabindex]):hover {
     transform: rotate(90deg);
 }
 
+.sidebar-compact .toggle-collapsed {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
 .sidenav-hold a .menu-caret {
     font-size: 1rem;
     line-height: 1;
@@ -304,20 +309,21 @@ a:not([href]):not([tabindex]):hover {
     margin-right: 0;
 }
 
-// .sidebar-compact .sidenav-hold .nav-dropdown-items {
-//     overflow: visible;
-//     position: absolute;
-//     left: 100%;
-//     top: 0;
-//     width: 200px;
-//     z-index: 9999;
-//     visibility: hidden;
-//     opacity: 0;
-//     -webkit-transform: translateY(10px);
-//     transform: translateY(10px);
-//     -webkit-box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
-//     box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
-// }
+.sidebar-compact .sidenav-hold .nav-dropdown-items {
+    overflow: visible;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: 200px;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    -webkit-box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
+}
+
 .sidenav-hold .nav-dropdown-items {
     max-height: 0;
     overflow: hidden;
@@ -340,3 +346,49 @@ a:not([href]):not([tabindex]):hover {
 // .sidebar-compact .sidenav-hold .item-name.lvl1 {
 //     display: none;
 // }
+// responsive css
+@media only screen and (min-width:768px) and (max-width: 1024px) {
+    .app-admin-container.sidebar-full .main-content-wrap {
+        width: 100%!important;
+    }
+    // .app-admin-container.sidebar-closed .sidebar-panel {
+    //     overflow: hidden;
+    //     left: -15rem;
+    // }
+    .toggle-collapsed {
+        display: none !important;
+    }
+}
+
+@media only screen and (min-width:360px) and (max-width: 767px) {
+    .app-admin-container.sidebar-full .main-content-wrap {
+        width: 100%!important;
+    }
+    // .app-admin-container.sidebar-closed .sidebar-panel {
+    //     overflow: hidden;
+    //     left: -15rem;
+    // }
+    .toggle-collapsed {
+        display: none !important;
+    }
+}
+
+.sidebar-backdrop.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.sidebar-backdrop {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    display: block;
+    z-index: 10000;
+    visibility: hidden;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, .6);
+    -webkit-transition: all .3s cubic-bezier(.35, 0, .25, 1);
+    transition: all .3s cubic-bezier(.35, 0, .25, 1);
+}

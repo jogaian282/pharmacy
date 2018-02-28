@@ -1,4 +1,4 @@
-import { Component, OnInit, Input , Output , EventEmitter } from '@angular/core';
+import { Component, OnInit, Input , Output , EventEmitter , AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'pharma-header',
@@ -6,7 +6,7 @@ import { Component, OnInit, Input , Output , EventEmitter } from '@angular/core'
   styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
 
   @Output() isToggleToolbar = new EventEmitter();
   @Output() isCollapseToolbar = new EventEmitter();
@@ -16,6 +16,9 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
   }
 
   toggleSideNav() {

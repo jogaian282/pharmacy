@@ -1,7 +1,8 @@
 <!-- begin sidebar navigation menu section -->
-<mat-sidenav-container class="app-admin-container" [class.sidebar-opened]="toggleToolbar || collapsedSidenav" [class.sidebar-compact]="collapsedSidenav" [class.sidebar-full]="toggleToolbar && !collapsedSidenav" [class.sidebar-closed]="!toggleToolbar">
+<mat-sidenav-container (window:resize)="onResize($event)" [attr.pcoded-device-type]="deviceType" [attr.vertical-nav-type]="verticalNavType" [attr.vertical-effect]="verticalEffect" class="app-admin-container" [class.sidebar-opened]="toggleToolbar || collapsedSidenav"
+    [class.sidebar-compact]="collapsedSidenav" [class.sidebar-full]="toggleToolbar && !collapsedSidenav" [class.sidebar-closed]="!toggleToolbar">
     <!-- begin sidenav content -->
-    <mat-sidenav-content cdkscrollable>
+    <mat-sidenav-content cdkscrollable #content>
         <div class="sidebar-panel">
             <!-- begin nav section -->
             <div class="navigation-hold ps" fxLayout="column" id="scroll-area" style="flex-direction: column;
@@ -10,7 +11,7 @@
                 <div class="branding default-bg">
                     <img alt="" class="app-logo" src="assets/images/angular_logo.png">
                     <!-- <img alt="" class="app-logo-text ng-star-inserted">Angular 5 -->
-                    <span class="app-logo-text">Angular 5</span>
+                    <!-- <span class="app-logo-text">Angular 5</span> -->
                 </div>
                 <div class="quick-search">
                     <mat-form-field>
@@ -63,6 +64,7 @@
                 <router-outlet></router-outlet>
             </main>
         </div>
+        <div class="sidebar-backdrop" [class.visible]="visible && toggleToolbar"></div>
         <!-- end main content -->
     </mat-sidenav-content>
     <!-- end sidenav content -->

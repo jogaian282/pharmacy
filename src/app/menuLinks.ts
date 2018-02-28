@@ -42,6 +42,23 @@ export const navigation = [
         icon: 'view_carousel'
       }
     ]
+  },
+  {
+    name: 'DDFDFDf',
+    url: '/base',
+    icon: 'build',
+    children: [
+      {
+        name: 'Cards',
+        url: '/base/cards',
+        icon: 'credit_card'
+      },
+      {
+        name: 'Carousels',
+        url: '/base/carousels',
+        icon: 'view_carousel'
+      }
+    ]
   }
 
 ];
